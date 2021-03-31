@@ -1,6 +1,6 @@
 import {
     APP_LOADED,
-} from "@actions/AppActions";
+} from "@actions/appActions";
 
 const initialState = {
     isLoaded: false
@@ -9,8 +9,7 @@ const initialState = {
 export const appReducer = (state = initialState, action) => {
     switch (action.type) {
         case APP_LOADED:
-            return {...state, isLoaded: true };
-
+            return {...state, isLoaded: !action.payload };
         default:
             return state;
     }

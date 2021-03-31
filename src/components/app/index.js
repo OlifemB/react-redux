@@ -1,11 +1,31 @@
 import React from 'react'
+import { connect } from "react-redux";
+import { AppComponent } from "./appComponent";
+import { handleAppLoaded } from "@actions/appActions"
 
-const App = () => {
-  return (
-    <div className="app" >
-      App is ready
-    </div>
-  )
+const App = ({ app }) => {
+	return (
+		<AppComponent
+			app={app}
+			handleAppLoaded={handleAppLoaded}
+		/>
+	)
 }
 
-export default App
+const mapStateToProps = state => {
+	console.log(state.app)
+	return {
+		app: state.app,
+	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		handleAppLoaded: (isLoaded) => dispatch(handleAppLoaded({ isLoaded: isLoaded }))
+	}
+}
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(App)

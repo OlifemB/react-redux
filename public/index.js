@@ -1,14 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import { BrowserRouter, HashRouter } from "react-router-dom";
 import { store } from "@redux/configureStore";
 import { ErrorBoundry } from "@components/error-boundry";
 import App from "@components/app";
-import './styles/vars.scss'
-import './styles/grid.scss'
 import './styles/styles.scss'
-import './styles/bootstrap.css'
+import registerServiceWorker from '../src/registerServiceWorker'
 
 ReactDOM.render(
   <Provider store={store}>
@@ -20,3 +18,4 @@ ReactDOM.render(
   </Provider>
   , document.getElementById("root")
 );
+registerServiceWorker();
